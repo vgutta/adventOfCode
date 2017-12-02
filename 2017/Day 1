@@ -1,0 +1,11 @@
+///code was short and simple enough to do on command line python
+
+total =0
+for x in range(len(input)-1):
+  if int(input[x]) == int(input[x+1]):
+    total += int(input[x])
+    
+if int(input[0]) == int(input[len(input)-1]):
+    total += int(input[0])
+
+total
