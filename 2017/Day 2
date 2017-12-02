@@ -1,0 +1,11 @@
+checkSum = 0
+
+for i in range(16):
+  high = 0
+  low = 0
+  data = [int(x) for x in input().split()]
+  high = max(data)
+  low = min(data)
+  checkSum += high - low
+  
+print(checkSum)
