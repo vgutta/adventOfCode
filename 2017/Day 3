@@ -1,0 +1,52 @@
+'''
+You come across an experimental new kind of memory stored on an infinite two-dimensional grid.
+
+Each square on the grid is allocated in a spiral pattern starting at a location
+marked 1 and then counting up while spiraling outward. For example, the first few
+squares are allocated like this:
+
+17  16  15  14  13
+18   5   4   3  12
+19   6   1   2  11
+20   7   8   9  10
+21  22  23---> ...
+
+While this is very space-efficient (no squares are skipped), requested data must be
+carried back to square 1 (the location of the only access port for this memory system)
+by programs that can only move up, down, left, or right. They always take the shortest path:
+the Manhattan Distance between the location of the data and square 1.
+
+For example:
+
+    Data from square 1 is carried 0 steps, since it's at the access port.
+    Data from square 12 is carried 3 steps, such as: down, left, left.
+    Data from square 23 is carried only 2 steps: up twice.
+    Data from square 1024 must be carried 31 steps.
+
+How many steps are required to carry the data from the square identified in your puzzle input all the way to the access port?
+Puzzle input: 325489
+
+'''
+
+#############################################################################
+# given x and n*n <= x. n*n is the number at the bottom right corner and n-1 is the distance from there to 1.
+# (n*n + n + 1) takes us around each corner
+# difference between x and n*n is the amount we need to travel around the sq
+# 570(takes us to top right) + 570(takes us to top left) + 570(takes us to bottom left)
+# then 18 steps left. And we know the width of square is 570. 1 is located half way in between = (570/2) = 285
+# we need to travel 285 - 18 steps to the right
+# since the number will be at the bottom line we must travel halfway up the square to get to 1. (570/2) = 285
+# total distance between 325489 and 1 is 285 - 18 + 285 = 552
+
+x = 325489
+n = 1
+while(n*n <= x):
+    n += 2
+if(n*n >= x):
+    n -=2
+
+print(n)                  # 569
+print(n*n)                # 323761
+print(325489-(n*n))       # the amount of steps in last(outer) lap- 1728
+
+
