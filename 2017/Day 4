@@ -1,0 +1,19 @@
+'''
+Given a document of 512 lines
+check if any of words in each line repeats
+and give a total of lines that don't repeat
+'''
+
+with open("home/desktop/wordChecker.txt", "r") as f:
+    data = f.readlines()
+
+counter = 0
+
+for line in data:
+    words = line.split()
+    wordset = set(words)
+    if len(words) == len(wordset):
+        counter += 1
+        
+        
+print(counter)
